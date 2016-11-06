@@ -25,6 +25,10 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("category")
 public class CategoryController extends BaseController {
 
+    private static final String PATH_ROOT = "web/default/";
+    private static final String PATH_LIST = PATH_ROOT + "list";
+    private static final String PATH_DETAIL = PATH_ROOT + "detail";
+
     @Resource
     private ArticleService articleService;
 
@@ -54,7 +58,7 @@ public class CategoryController extends BaseController {
 
         model.addAttribute("articlesDto", articlesDto);
         model.addAttribute("category", category);
-        return "list";
+        return PATH_LIST;
     }
 
     /**
@@ -76,8 +80,9 @@ public class CategoryController extends BaseController {
         }
 
         ResponseDto<Category> categoryDto = categoryService.findCategoryByCode(code);
+        Category category = categoryDto.getEntity();
 
-        if (categoryDto.getEntity() == null) {
+        if (category == null) {
             return "404";
         }
 
@@ -87,8 +92,8 @@ public class CategoryController extends BaseController {
         article.setBody(MarkdownUtil.markdownToHtml(article.getBody()));
 
         model.addAttribute("articleDto", articleDto);
-        model.addAttribute("categoryDto", categoryDto);
-        return "detail";
+        model.addAttribute("category", category);
+        return PATH_DETAIL;
     }
 
 }

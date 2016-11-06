@@ -5,7 +5,7 @@
 <@override name="content">
 <div class="space-30"></div>
 
-<#include "../../breadcrumbs.ftl"/>
+    <#include "../../breadcrumbs.ftl"/>
 
 <div class="space-10"></div>
 
