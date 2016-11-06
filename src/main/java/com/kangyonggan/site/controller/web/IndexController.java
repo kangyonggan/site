@@ -43,7 +43,7 @@ public class IndexController extends BaseController {
         category.setCode("all");
         category.setName("首页");
 
-        model.addAttribute("articlesDto", articlesDto);
+        model.addAttribute("page", articlesDto.getPage());
         model.addAttribute("category", category);
         return PATH_LIST;
     }
@@ -64,7 +64,7 @@ public class IndexController extends BaseController {
         category.setCode("search");
         category.setName(key);
 
-        model.addAttribute("articlesDto", articlesDto);
+        model.addAttribute("page", articlesDto.getPage());
         model.addAttribute("category", category);
         return PATH_LIST;
     }

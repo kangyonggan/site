@@ -1,5 +1,3 @@
-<#assign article="${articleDto.entity}"/>
-<#assign category="${categoryDto.entity}"/>
 <#assign title="${article.title}"/>
 
 <@override name="content">

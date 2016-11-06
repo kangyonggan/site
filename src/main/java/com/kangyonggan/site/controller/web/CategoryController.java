@@ -56,7 +56,7 @@ public class CategoryController extends BaseController {
 
         ResponseDto<Article> articlesDto = articleService.findArticlesByPage(pageNum, category.getCode());
 
-        model.addAttribute("articlesDto", articlesDto);
+        model.addAttribute("page", articlesDto.getPage());
         model.addAttribute("category", category);
         return PATH_LIST;
     }
@@ -91,7 +91,7 @@ public class CategoryController extends BaseController {
          */
         article.setBody(MarkdownUtil.markdownToHtml(article.getBody()));
 
-        model.addAttribute("articleDto", articleDto);
+        model.addAttribute("article", articleDto.getEntity());
         model.addAttribute("category", category);
         return PATH_DETAIL;
     }
